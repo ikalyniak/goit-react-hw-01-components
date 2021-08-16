@@ -28,8 +28,12 @@ function App() {
         avatar={avatar}
         stats={stats}
       />
+
       <Statistics stats={statisticalData} />
+      <Statistics title="Upload stats" stats={statisticalData} />
+
       <FriendList friends={friends} />
+
       <TransactionHistory items={transactions} />
     </div>
   );

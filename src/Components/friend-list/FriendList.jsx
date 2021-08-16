@@ -1,17 +1,27 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import Friend from './Friend';
 
-function FriendList({ avatar, className, isOnline }) {
+function FriendList({ friends }) {
   return (
-    <div className="friendList">
-      <ul className="friend-list">
-        <li className="item">
-          <span className="status"></span>
-          <img className="avatar" src="" alt="" width="48" />
-          <p className="name"></p>
-        </li>
-      </ul>
-    </div>
+    <ul className="friend-list">
+      {friends.map(friend => (
+        <Friend
+          key={friend.id}
+          avatar={friend.avatar}
+          name={friend.name}
+          isOnline={friend.isOnline}
+        />
+      ))}
+    </ul>
   );
 }
+
+FriendList.propTypes = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
+  ),
+};
 
 export default FriendList;
